@@ -10,3 +10,11 @@ Assignment 1: Data Frame
 - dataframe
 [code](https://github.com/Ubanwani/Rcode_Uba/blob/main/dframe.R)
 
+Assignment_2 data_wrangling
+funtions
+view, glimpse, class
+drop
+mutate
+read
+ggplot
+[code](https://github.com/Ubanwani/Rcode_Uba/blob/main/ASSIGNMENT2_DATA_WRANGLING.R)

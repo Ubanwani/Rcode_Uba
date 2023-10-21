@@ -18,3 +18,6 @@ mutate
 read
 ggplot
 [code](https://github.com/Ubanwani/Rcode_Uba/blob/main/ASSIGNMENT2_DATA_WRANGLING.R)
+
+Use this link
+[code](https://github.com/Ubanwani/Rcode_Uba/blob/main/ASSIGNMENT2_DATA_WRANGLING.R)

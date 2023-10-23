@@ -1,0 +1,104 @@
+---
+title: "Assignment 3 – Using SQL in R"
+output: html_document
+date: "2023-10-21"
+---
+
+## **Assignment 3 -- Using SQL in R**
+
+Analyze Sales and Customer Data in AdventureWorks2019 Using SQL in R studio:
+
+QUESTION 1.     Which geographic regions generate the most sales?
+
+```{r NEW}
+library(tidyverse)
+library(RODBC)
+
+myDatabase <- odbcConnect("myDatabase", rows_at_time = 1)
+```
+
+```{r}
+salesData <- "SELECT 
+      [Group] as 'TotalRegion',
+      sum([SalesYTD]+[SalesLastYear]) as 'TotalSales'
+  FROM [AdventureWorks2019].[Sales].[SalesTerritory]
+  group by [group]"
+
+salesQuery <- sqlQuery(myDatabase, salesData, 
+                       stringsAsFactor = FALSE)
+print(salesQuery)
+```
+
+**VISUALIZATION USING PIE CHART**
+
+```{r}
+ggplot(salesQuery, aes(x="", y=TotalSales, fill=TotalRegion))+
+  geom_bar(stat = "identity", color = "gray") +
+  coord_polar(theta = "y") +
+  scale_fill_brewer() +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank(),
+        panel.grid = element_blank(),
+        plot.title = element_text(hjust = 0.5),
+        panel.background = element_rect(fill = "#ebf2ff"),
+        plot.background = element_rect(fill = "#ebf2ff"),
+        legend.background = element_rect(fill = "#ebf2ff"))+
+  ggtitle("Total share of Region")
+
+```
+
+QUESTION 2.     What are the most profitable products?
+
+```{r}
+profitProduct <- "Select top (10) Production.Product.Name as  ProductName,
+	SUM(SalesOrderDetail.LineTotal) as SalesPrice
+	From Production.Product
+	left join Sales.SalesOrderDetail on 
+	Sales.SalesOrderDetail.ProductID = Product.ProductID
+
+	group by Production.Product.Name, SalesOrderDetail.LineTotal
+	order by SalesPrice desc"
+
+profitQuery <- sqlQuery(myDatabase, profitProduct, 
+                       stringsAsFactor = FALSE)
+print(profitQuery)
+
+```
+
+**VISUALIZATION USING BAR CHART**
+
+```{r}
+profitProduct <- "Select top (10) Production.Product.Name as  ProductName,
+	SUM(SalesOrderDetail.LineTotal) as SalesPrice
+	From Production.Product
+	left join Sales.SalesOrderDetail on 
+	Sales.SalesOrderDetail.ProductID = Product.ProductID
+
+	group by Production.Product.Name, SalesOrderDetail.LineTotal
+	order by SalesPrice desc"
+# head(profitProduct)
+
+profitQuery <- sqlQuery(myDatabase, profitProduct, 
+                       stringsAsFactor = FALSE)
+print(profitQuery)
+```
+
+```{r}
+profitProduct <- "Select top (10) Production.Product.Name as  ProductName,
+	SUM(SalesOrderDetail.LineTotal) as SalesPrice
+	From Production.Product
+	left join Sales.SalesOrderDetail on 
+	Sales.SalesOrderDetail.ProductID = Product.ProductID
+
+	group by Production.Product.Name, SalesOrderDetail.LineTotal
+	order by SalesPrice desc"
+# head(profitProduct)
+
+profitQuery <- sqlQuery(myDatabase, profitProduct, 
+                       stringsAsFactor = FALSE)
+print(profitQuery)
+
+ggplot(data=profitQuery,aes(y=ProductName, x=profitProduct)) +
+  geom_bar(stat = "identity")
+```

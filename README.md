@@ -21,3 +21,20 @@ ggplot
 
 Use this link
 [code](https://github.com/Ubanwani/Rcode_Uba/blob/main/ASSIGNMENT2_DATA_WRANGLING.R)
+
+Assignment 3 SQL DATASET IN R
+Calling library RODBC
+Data cleaning
+Visualization using
+ histogram, bar chart, scatter chart, pie chart
+
+
+ Assignment 4 LINEAR REGRESSION IN R
+ uploading csv files to R
+ train and test data
+ model data
+ summerize dataset
+ predict values using scatter chart
+ finding error 
+ adding new predicted values to dataset
+ 

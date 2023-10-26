@@ -27,7 +27,7 @@ Calling library RODBC
 Data cleaning
 Visualization using
  histogram, bar chart, scatter chart, pie chart
-
+[code] (https://github.com/Ubanwani/Rcode_Uba/blob/main/Assignment%203.Rmd)
 
  Assignment 4 LINEAR REGRESSION IN R
  uploading csv files to R

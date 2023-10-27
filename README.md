@@ -40,3 +40,13 @@ Visualization using
  [code] (https://github.com/Ubanwani/Rcode_Uba/blob/main/Assignment4.html)
  [code] (https://github.com/Ubanwani/Rcode_Uba/blob/main/Assignment4_2.html)
  
+Assignment 5 CLUSTERING in R
+Installing ggfortify, factoextra
+fviz_nbcluster
+kmean
+autoplot
+clusters
+rownames
+table
+[code] (https://github.com/Ubanwani/Rcode_Uba/blob/main/Assignment_5_Clustering.html)
+[code] (https://github.com/Ubanwani/Rcode_Uba/blob/main/Assignment_5_Clustering.Rmd)

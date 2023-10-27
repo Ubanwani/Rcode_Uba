@@ -1,0 +1,62 @@
+---
+title: "Assignment 5"
+output: html_document
+date: "2023-10-26"
+---
+
+# CLUSTER USING mammalSleep dataset in R
+
+```{r}
+library(tidyverse)
+library(stats)
+library(ggfortify)
+library(factoextra)
+
+mammalSleep2 <- read.csv("mammal_Sleep2.csv")
+view(mammalSleep2)
+```
+
+```{r}
+mammaSleep <- data.frame(mammalSleep2$sleep_total, mammalSleep2$sleep_rem)
+view(mammaSleep)
+
+b <- mean(mammalSleep2$sleep_rem, na.rm=TRUE)
+print(b)
+
+mammaSleep <- mammaSleep %>% 
+  mutate(mammalSleep2.sleep_rem = replace_na(
+    mammalSleep2.sleep_rem, 1.9)) %>% 
+  view()
+
+data <- mammaSleep[,1:2]
+# scale the dataset
+data_scale <- scale(data)
+
+
+fviz_nbclust(data_scale, kmeans, method="wss") +
+  labs(subtitle="Elbow method")
+
+fviz_nbclust(data_scale, kmeans, method="gap_stat") +
+  labs(subtitle="silhouette method")
+
+fviz_nbclust(data_scale, kmeans, method="gap_stat") +
+  labs(subtitle="Gap stat method")
+
+# KM = Kmeans(data,2)
+model_sleep <- kmeans(data_scale, centers = 4, nstart = 10)
+
+# cluster plot
+autoplot(model_sleep, data_scale, frame= TRUE)
+
+sleep.clusters <- model_sleep$cluster
+
+rownames(data_scale) <- mammalSleep2$vore  
+rownames(data_scale) <- paste(mammalSleep2$vore,
+                              1:dim(mammalSleep2)[1],
+                              sep="_")
+fviz_cluster(list(data=data_scale, 
+                  cluster = sleep.clusters))
+table(sleep.clusters, mammalSleep2$vore)
+```
+
+## 

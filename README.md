@@ -50,3 +50,11 @@ rownames
 table
 [code] (https://github.com/Ubanwani/Rcode_Uba/blob/main/Assignment_5_Clustering.html)
 [code] (https://github.com/Ubanwani/Rcode_Uba/blob/main/Assignment_5_Clustering.Rmd)
+
+Assignment 6 Time Series
+class
+decompose
+arima
+accuracy
+[code] (https://github.com/Ubanwani/Rcode_Uba/blob/main/Assignment_6_Time_Series.html)
+
